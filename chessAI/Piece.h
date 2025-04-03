@@ -6,6 +6,7 @@
 class Piece
 {
 public:
+    virtual ~Piece() = default;
     virtual std::string GetRule() = 0;
 
     std::string GetSign() const { return sign; }
