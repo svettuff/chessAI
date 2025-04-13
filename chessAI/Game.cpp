@@ -28,7 +28,7 @@ void Game::Play()
 void Game::GeneratePieces()
 {
     pieces.emplace_back(new Pawn(5, 0, 0));
-    pieces.emplace_back(new Pawn(5, 1, 1));
+    pieces.emplace_back(new Pawn(5, 2, 1));
 }
 
 void Game::DeletePieces()

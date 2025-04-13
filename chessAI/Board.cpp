@@ -16,8 +16,16 @@ void Board::Draw(const std::vector<Piece*> pieces)
         }
     }
 
-    for (auto *piece : pieces)
-        board[piece->GetRow()][piece->GetCol()] = piece->GetSign();
+    for (auto* piece : pieces)
+    {
+        int r = piece->GetRow();
+        int c = piece->GetCol();
+        std::string sign = piece->GetSign();
+        
+        std::string bgColor = ((r + c) % 2 == 0) ? "\033[47m" : "\033[40m";
+        
+        board[r][c] = bgColor + sign + " \033[0m";
+    }
 
     for (int row = 0; row < size; row++)
     {
