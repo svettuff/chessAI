@@ -5,10 +5,8 @@ class Pawn : public Piece
 {
 
 public:
-    Pawn();
+    Pawn(int r, int c, int i);
     
-    std::vector<Piece> startPosition(int index) override;
-    
-    std::vector<Move> GetRule(int row, int col, int id, int color) override;
+    void GetRule() override;
 };
 
