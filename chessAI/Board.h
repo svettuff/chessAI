@@ -9,7 +9,8 @@ class Board
 {
 public:
     void Draw();
-
+    
+    void Initialize();
     // set piece
 
 private:
