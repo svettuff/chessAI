@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-void Board::Draw()
+void Board::Draw(const std::vector<Piece*> pieces)
 {
     const int size = 8;
     for (int row = 0; row < size; row++)
@@ -10,9 +10,20 @@ void Board::Draw()
         for (int col = 0; col < size; col++)
         {
             if ((row + col) % 2 == 0)
-                std::cout << "\033[47m  \033[0m";
+                board[row][col] = "\033[47m  \033[0m";
             else
-               std::cout << "\033[40m  \033[0m";
+               board[row][col] = "\033[40m  \033[0m";
+        }
+    }
+
+    for (auto *piece : pieces)
+        board[piece->GetRow()][piece->GetCol()] = piece->GetSign();
+
+    for (int row = 0; row < size; row++)
+    {
+        for (int col = 0; col < size; col++)
+        {
+            std::cout << board[row][col] << " ";
         }
         std::cout << std::endl;
     }

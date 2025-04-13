@@ -8,10 +8,10 @@
 class Board
 {
 public:
-    void Draw();
+    void Draw(const std::vector<Piece*> pieces);
     
     // set piece
 
 private:
-    //field
+    std::string board[8][8];
 };

@@ -5,12 +5,21 @@
 
 #include "Pawn.h"
 
+Game::Game()
+{
+    GeneratePieces();
+}
+
+Game::~Game()
+{
+    DeletePieces();
+}
+
 void Game::Play()
 {
-    
     while (true)
     {
-        board.Draw();
+        board.Draw(pieces);
         std::string move;
         std::cin >> move;
     }

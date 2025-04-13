@@ -12,6 +12,9 @@ public:
     virtual void GetRule() = 0;
 
     virtual ~Piece() = default;
+
+    int GetRow() const { return row; }
+    int GetCol() const { return col; }
     
 protected:
     Piece(int r, int c, int i) : row(r), col(c), index(i) {}
