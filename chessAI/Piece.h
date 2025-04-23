@@ -23,5 +23,6 @@ protected:
     int col = 0;
     int index = 0;
     std::string sign;
+    int direction = 0;
 };
 
