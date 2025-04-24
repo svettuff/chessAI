@@ -2,7 +2,8 @@
 
 Pawn::Pawn(int r, int c, int i) : Piece(r, c, i)
 {
-    sign = "♙";
+    sign = u8"\u2659"; // Це те саме, що "♙", але явно через Unicode
+
 }
 
 void Pawn::GetRule()
