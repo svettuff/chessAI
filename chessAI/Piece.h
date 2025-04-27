@@ -4,6 +4,8 @@
 
 // figure and inheritors(pawn, king)
 
+//TODO: Make all pieces
+
 enum class Direction : int {
     Up   = -1,
     Down = 1

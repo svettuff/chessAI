@@ -65,7 +65,6 @@ void Game::ProccessMove(const std::string& move) // TODO: check is correct forma
                 {
                     piece->SetRow(piece_destination.first);
                     piece->SetCol(piece_destination.second);
-                    std::cout << piece->GetRow() << " " << piece->GetCol() << std::endl;
                 }
             }
         }
