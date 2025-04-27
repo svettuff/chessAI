@@ -4,25 +4,34 @@
 
 // figure and inheritors(pawn, king)
 
+enum class Direction : int {
+    Up   = -1,
+    Down = 1
+};
+
 class Piece
 {
 public:
+    virtual ~Piece() = default;
+    
+    virtual std::vector<std::pair<int, int>> GetPossibleMoves() = 0;
+
+    int GetCol() const { return col; }
+    int GetRow() const { return row; }
     std::string GetSign() const { return sign; }
 
-    virtual void GetRule() = 0;
-
-    virtual ~Piece() = default;
-
-    int GetRow() const { return row; }
-    int GetCol() const { return col; }
+    void SetCol(int col) { this->col = col; }
+    void SetRow(int row) { this->row = row; }
     
 protected:
     Piece(int r, int c, int i) : row(r), col(c), index(i) {}
     
-    int row = 0;
     int col = 0;
     int index = 0;
+    int row = 0;
+    
     std::string sign;
-    int direction = 0;
+
+    Direction direction;
 };
 

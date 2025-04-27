@@ -2,27 +2,22 @@
 
 Pawn::Pawn(int r, int c, int i) : Piece(r, c, i)
 {
-    sign = u8"\u2659"; // Це те саме, що "♙", але явно через Unicode
-
+    sign = u8"\u2659"; // TODO: need to be black on white background
 }
 
-void Pawn::GetRule()
+std::vector<std::pair<int, int>> Pawn::GetPossibleMoves()
 {
-    // return vector of coordinates
-    // std::pair<int, int> pair;
-    //pair.first = 3;
-    //pair.second = 4;
-    // std::vector<std::pair<int, int>> array;
-
     std::vector<std::pair<int, int>> moves;
 
     if (index < 16)
-        direction = -1;
+        direction = Direction::Up;
     else if (index < 32)
-        direction = 1;
+        direction = Direction::Down;
     
-    moves.emplace_back(row + direction, col);
+    moves.emplace_back(row + static_cast<int>(direction), col);
 
-    if ((direction == -1 && row == 1) || (direction == 1 && row == 6))
-        moves.emplace_back(col + 2 * direction, col);
+    if ((direction == Direction::Up && row == 1) || (direction == Direction::Down && row == 6))
+        moves.emplace_back(col + 2 * static_cast<int>(direction), col);
+
+    return moves;
 }

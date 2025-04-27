@@ -13,6 +13,7 @@ public:
 private:
     void GeneratePieces();
     void DeletePieces();
+    void ProccessMove(const std::string& move);
     
     Board board;
     std::vector<Piece*> pieces;

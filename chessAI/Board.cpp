@@ -4,6 +4,7 @@
 
 void Board::Draw(const std::vector<Piece*> pieces)
 {
+    // Fill cells
     const int size = 8;
     for (int row = 0; row < size; row++)
     {
@@ -16,6 +17,7 @@ void Board::Draw(const std::vector<Piece*> pieces)
         }
     }
 
+    // Fill pieces
     for (auto* piece : pieces)
     {
         int r = piece->GetRow();
@@ -27,12 +29,12 @@ void Board::Draw(const std::vector<Piece*> pieces)
         board[r][c] = bgColor + sign + " \033[0m";
     }
 
+    // Drawing
     for (int row = 0; row < size; row++)
     {
         for (int col = 0; col < size; col++)
-        {
             std::cout << board[row][col] << " ";
-        }
+
         std::cout << std::endl;
     }
 }

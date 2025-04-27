@@ -7,6 +7,6 @@ class Pawn : public Piece
 public:
     Pawn(int r, int c, int i);
     
-    void GetRule() override;
+    std::vector<std::pair<int, int>> GetPossibleMoves() override;
 };
 
