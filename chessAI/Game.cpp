@@ -58,7 +58,7 @@ void Game::ProccessMove(const std::string& move) // TODO: check is correct forma
     {
         if (piece->GetRow() == piece_position.first && piece->GetCol() == piece_position.second)
         {
-            auto possibleMoves = piece->GetPossibleMoves();
+            auto possibleMoves = piece->GetPossibleMoves(); 
             for (auto& possibleMove : possibleMoves)
             {
                 if (possibleMove == piece_destination)

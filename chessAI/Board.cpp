@@ -31,7 +31,7 @@ void Board::Draw(const std::vector<Piece*> pieces)
 
     // Drawing
     for (int row = 0; row < size; row++)
-    {
+    { 
         for (int col = 0; col < size; col++)
             std::cout << board[row][col] << " ";
 

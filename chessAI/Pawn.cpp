@@ -11,7 +11,7 @@ std::vector<std::pair<int, int>> Pawn::GetPossibleMoves()
 
     if (index < 16)
         direction = Direction::Up;
-    else if (index < 32)
+    else if (index < 32)    
         direction = Direction::Down;
     
     moves.emplace_back(row + static_cast<int>(direction), col);
