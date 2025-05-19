@@ -3,7 +3,7 @@
 King::King(int r, int c, int i) : Piece(r, c, i)
 {
     if (index < 16)
-        sign = u8"\u2654";
+        sign = u8"\u2654"; // TODO: need to be black on white background
     else 
         sign = u8"\u265A";
 }

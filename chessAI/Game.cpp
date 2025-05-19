@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 
+#include "King.h"
 #include "Pawn.h"
 
 Game::Game()
@@ -30,6 +31,7 @@ void Game::GeneratePieces()
 {
     pieces.emplace_back(new Pawn(6, 0, 0));
     pieces.emplace_back(new Pawn(6, 1, 1));
+    pieces.emplace_back(new King(7, 2, 2));
 }
 
 void Game::DeletePieces()
