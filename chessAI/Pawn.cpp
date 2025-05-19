@@ -2,7 +2,10 @@
 
 Pawn::Pawn(int r, int c, int i) : Piece(r, c, i)
 {
-    sign = u8"\u2659"; // TODO: need to be black on white background
+    if (index < 16)
+        sign = u8"\u2659"; // TODO: need to be black on white background
+    else   
+        sign = u8"\u265F";
 }
 
 std::vector<std::pair<int, int>> Pawn::GetPossibleMoves()
