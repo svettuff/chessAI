@@ -5,6 +5,10 @@
 
 #include "King.h"
 #include "Pawn.h"
+#include "Knight.h"
+#include "Bishop.h"
+#include "Queen.h"
+#include "Rook.h"
 
 Game::Game()
 {
@@ -29,10 +33,31 @@ void Game::Play()
 
 void Game::GeneratePieces()
 {
-    pieces.emplace_back(new Pawn(6, 0, 0));
-    pieces.emplace_back(new Pawn(6, 1, 1));
-    pieces.emplace_back(new King(7, 2, 2));
+    for (int col = 0; col < 8; ++col)
+        pieces.emplace_back(new Pawn(6, col, 8 + col)); 
+    
+    for (int col = 0; col < 8; ++col)
+        pieces.emplace_back(new Pawn(1, col, 48 + col));  
+    
+    pieces.emplace_back(new Rook(7, 0, 0));
+    pieces.emplace_back(new Knight(7, 1, 1));
+    pieces.emplace_back(new Bishop(7, 2, 2));
+    pieces.emplace_back(new Queen(7, 3, 3));
+    pieces.emplace_back(new King(7, 4, 4));
+    pieces.emplace_back(new Bishop(7, 5, 5));
+    pieces.emplace_back(new Knight(7, 6, 6));
+    pieces.emplace_back(new Rook(7, 7, 7));
+    
+    pieces.emplace_back(new Rook(0, 0, 56));
+    pieces.emplace_back(new Knight(0, 1, 57));
+    pieces.emplace_back(new Bishop(0, 2, 58));
+    pieces.emplace_back(new Queen(0, 3, 59));
+    pieces.emplace_back(new King(0, 4, 60));
+    pieces.emplace_back(new Bishop(0, 5, 61));
+    pieces.emplace_back(new Knight(0, 6, 62));
+    pieces.emplace_back(new Rook(0, 7, 63));
 }
+
 
 void Game::DeletePieces()
 {
