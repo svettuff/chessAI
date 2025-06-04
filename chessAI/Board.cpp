@@ -34,7 +34,13 @@ void Board::Draw(const std::vector<Piece*> pieces)
     { 
         for (int col = 0; col < size; col++)
             std::cout << board[row][col] << " ";
-
+        
+        std::cout << size - row;
         std::cout << std::endl;
     }
+
+    std::cout << "";
+    for (int col = 0; col < size; ++col)
+        std::cout << static_cast<char>('A' + col) << "  ";
+    std::cout << '\n';
 }
