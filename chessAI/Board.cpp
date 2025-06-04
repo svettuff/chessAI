@@ -23,10 +23,12 @@ void Board::Draw(const std::vector<Piece*> pieces)
         int r = piece->GetRow();
         int c = piece->GetCol();
         std::string sign = piece->GetSign();
-        
-        std::string bgColor = ((r + c) % 2 == 0) ? "\033[47m" : "\033[40m";
-        
-        board[r][c] = bgColor + sign + " \033[0m";
+
+        bool lightSquare = ((r + c) % 2 == 0);
+        std::string bgColor = lightSquare ? "\033[47m" : "\033[40m";
+        std::string fgColor = lightSquare ? "\033[30m" : "\033[97m";
+
+        board[r][c] = bgColor + fgColor + sign + " \033[0m";
     }
 
     // Drawing
