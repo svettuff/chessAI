@@ -7,4 +7,6 @@ public:
     Knight(int r, int c, int i);
 
     std::vector<std::pair<int, int>> GetPossibleMoves() override;
+
+    int bebro = 10;
 };

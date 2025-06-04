@@ -15,11 +15,6 @@ Game::Game()
     GeneratePieces();
 }
 
-Game::~Game()
-{
-    DeletePieces();
-}
-
 void Game::Play()
 {
     while (true)
@@ -27,45 +22,40 @@ void Game::Play()
         board.Draw(pieces);
         std::string move;
         std::cin >> move;
-        ProccessMove(move);
+        ProcessMove(move);
     }
 }
 
 void Game::GeneratePieces()
 {
     for (int col = 0; col < 8; ++col)
-        pieces.emplace_back(new Pawn(6, col, 8 + col)); 
+        pieces.emplace_back(std::make_unique<Pawn>(6, col, 8 + col)); 
     
     for (int col = 0; col < 8; ++col)
-        pieces.emplace_back(new Pawn(1, col, 48 + col));  
+        pieces.emplace_back(std::make_unique<Pawn>(1, col, 48 + col));  
     
-    pieces.emplace_back(new Rook(7, 0, 0));
-    pieces.emplace_back(new Knight(7, 1, 1));
-    pieces.emplace_back(new Bishop(7, 2, 2));
-    pieces.emplace_back(new Queen(7, 3, 3));
-    pieces.emplace_back(new King(7, 4, 4));
-    pieces.emplace_back(new Bishop(7, 5, 5));
-    pieces.emplace_back(new Knight(7, 6, 6));
-    pieces.emplace_back(new Rook(7, 7, 7));
+    pieces.emplace_back(std::make_unique<Rook>(7, 0, 0));
+    pieces.emplace_back(std::make_unique<Knight>(7, 1, 1));
+    pieces.emplace_back(std::make_unique<Bishop>(7, 2, 2));
+    pieces.emplace_back(std::make_unique<Queen>(7, 3, 3));
+    pieces.emplace_back(std::make_unique<King>(7, 4, 4));
+    pieces.emplace_back(std::make_unique<Bishop>(7, 5, 5));
+    pieces.emplace_back(std::make_unique<Knight>(7, 6, 6));
+    pieces.emplace_back(std::make_unique<Rook>(7, 7, 7));
     
-    pieces.emplace_back(new Rook(0, 0, 56));
-    pieces.emplace_back(new Knight(0, 1, 57));
-    pieces.emplace_back(new Bishop(0, 2, 58));
-    pieces.emplace_back(new Queen(0, 3, 59));
-    pieces.emplace_back(new King(0, 4, 60));
-    pieces.emplace_back(new Bishop(0, 5, 61));
-    pieces.emplace_back(new Knight(0, 6, 62));
-    pieces.emplace_back(new Rook(0, 7, 63));
+    pieces.emplace_back(std::make_unique<Rook>(0, 0, 56));
+    pieces.emplace_back(std::make_unique<Knight>(0, 1, 57));
+    pieces.emplace_back(std::make_unique<Bishop>(0, 2, 58));
+    pieces.emplace_back(std::make_unique<Queen>(0, 3, 59));
+    pieces.emplace_back(std::make_unique<King>(0, 4, 60));
+    pieces.emplace_back(std::make_unique<Bishop>(0, 5, 61));
+    pieces.emplace_back(std::make_unique<Knight>(0, 6, 62));
+    pieces.emplace_back(std::make_unique<Rook>(0, 7, 63));
 }
 
-
-void Game::DeletePieces()
-{
-    for (auto *piece : pieces)
-        delete piece;
-}
-
-void Game::ProccessMove(const std::string& move) // TODO: check is correct format, REFACTOR!!!!
+// TODO: check is correct format
+// TODO: tell if move is incorrect
+void Game::ProcessMove(const std::string& move)
 {
     std::string position = move.substr(0, 2);  
     std::string destination = move.substr(2);
@@ -81,7 +71,7 @@ void Game::ProccessMove(const std::string& move) // TODO: check is correct forma
     piece_destination.first = 8 - piece_destination.first;
     piece_destination.second = destination[1] - 'A';
 
-    for (auto piece : pieces)
+    for (auto& piece : pieces)
     {
         if (piece->GetRow() == piece_position.first && piece->GetCol() == piece_position.second)
         {
@@ -90,6 +80,13 @@ void Game::ProccessMove(const std::string& move) // TODO: check is correct forma
             {
                 if (possibleMove == piece_destination)
                 {
+                    // TODO: ignore for knight
+                    auto* knight = dynamic_cast<Knight*>(piece.get());
+                    if (knight == nullptr)
+                    {
+                        // TODO: check is there piece on the way
+                    }
+                        
                     piece->SetRow(piece_destination.first);
                     piece->SetCol(piece_destination.second);
                 }
