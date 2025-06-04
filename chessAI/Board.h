@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <memory>
 #include <vector>
 
 #include "Piece.h"
@@ -8,7 +9,7 @@
 class Board
 {
 public:
-    void Draw(const std::vector<Piece*> pieces);
+    void Draw(const std::vector<std::unique_ptr<Piece>>& pieces);
     
     // set piece
 

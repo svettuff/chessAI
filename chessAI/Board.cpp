@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-void Board::Draw(const std::vector<Piece*> pieces)
+void Board::Draw(const std::vector<std::unique_ptr<Piece>>& pieces)
 {
     // Fill cells
     const int size = 8;
@@ -18,7 +18,7 @@ void Board::Draw(const std::vector<Piece*> pieces)
     }
 
     // Fill pieces
-    for (auto* piece : pieces)
+    for (auto& piece : pieces)
     {
         int r = piece->GetRow();
         int c = piece->GetCol();
